@@ -21,7 +21,7 @@ services:
   kkt-talks-api:
     build: kousa
     env_file:
-      - kousa/kousa.env
+      - kousa/kousa.dev.env
     networks:
       - kkt-talks-network
     ports:
@@ -31,7 +31,7 @@ services:
   kkt-talks-vs:
     build: shawarma
     env_file:
-      - shawarma/shawarma.env
+      - shawarma/shawarma.dev.env
     networks:
       - kkt-talks-network
     restart: always
