@@ -11,8 +11,8 @@ function createWindow() {
       nodeIntegration: true,
     },
   });
-  console.log(systemPreferences.getMediaAccessStatus("microphone"));
-  mainWindow.loadURL(`https://dogehouse.tv/`);
+  // console.log(systemPreferences.getMediaAccessStatus("microphone"));
+  mainWindow.loadURL(`https://talks.kokatto.net`);
 
   ipcMain.on("request-mic", async (event, serviceName) => {
     const isAllowed: boolean = await systemPreferences.askForMediaAccess(
