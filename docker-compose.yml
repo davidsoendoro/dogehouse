@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+  kkt-rabbitmq:
+    image: rabbitmq
+    environment:
+      - "RABBITMQ_DEFAULT_USER=user"
+      - "RABBITMQ_DEFAULT_PASS=k0katt0s3cr3t"
+    networks:
+      - kkt-talks-network
+    restart: always
+  kkt-talks-db:
+    image: postgres
+    env_file:
+      - db/database.env
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+    networks:
+      - kkt-talks-network
+    restart: always
+  kkt-talks-api:
+    build: kousa
+    env_file:
+      - kousa/kousa.env
+    networks:
+      - kkt-talks-network
+    ports:
+      - "3001:3001"
+      - "4001:4001"
+    restart: always
+  kkt-talks-vs:
+    build: shawarma
+    env_file:
+      - shawarma/shawarma.env
+    networks:
+      - kkt-talks-network
+    restart: always
+    depends_on: 
+      - kkt-rabbitmq
+  kkt-talks-fe:
+    image: node
+    volumes:
+      - ./kofta:/app
+    working_dir: /app
+    environment:
+      - "HTTPS=false"
+    networks:
+      - kkt-talks-network
+    ports:
+      - "3000:3000"
+    command: bash -c "npm start"
+
+volumes:
+  database-data:
+
+networks:
+  kkt-talks-network:
+    external:
+      name: kkt-talks-network
