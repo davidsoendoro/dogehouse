@@ -1,4 +1,4 @@
-import { useMicIdStore } from "../../vscode-webview/shared-stores";
+import { useMicIdStore } from "../../app/shared-stores";
 import { useMicPermErrorStore } from "../stores/useMicPermErrorStore";
 import { useProducerStore } from "../stores/useProducerStore";
 import { useVoiceStore } from "../stores/useVoiceStore";
