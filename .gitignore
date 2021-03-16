@@ -10,3 +10,5 @@ node_modules
 _
 .next
 .env.local
+kousa.dev.env
+shawarma.dev.env

@@ -54,7 +54,7 @@ function createWindow() {
     mainWindow.webContents.openDevTools();
   }
   mainWindow.loadURL(
-    __prod__ ? `https://dogehouse.tv/` : "http://localhost:3000/"
+    __prod__ ? `https://talks.kokatto.net/` : "http://localhost:3000/"
   );
 
   setTimeout(
